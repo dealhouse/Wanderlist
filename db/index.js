@@ -1,7 +1,8 @@
+import CONNECTION_URL from '../server'
 const mongoose = require('mongoose')
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/wanderDatabase')
+    .connect(CONNECTION_URL)
     .then(() => {
         console.log('Successfully connected to MongoDB')
     })
