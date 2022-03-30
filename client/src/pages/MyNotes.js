@@ -50,6 +50,7 @@ const handleSelect = (e) => {
 const handleDeselect = (e) => {
     e.preventDefault()
     setSelected()
+    setUpdating()
 }
 
 const handleUpdate = (e) => {
@@ -70,7 +71,10 @@ const handleSave = async (e) => {
     setClick((prevState) => prevState + 1)
 }
 
-const handleDelete = (e) => {
+const handleDelete = async (e) => {
+    e.preventDefault()
+    await axios.delete(`http://localhost:3001/api/note/${selected}`)
+    setClick((prevState) => prevState + 1)
 
 }
 
@@ -119,7 +123,7 @@ const handleDelete = (e) => {
                 }
                 {selected === note._id && 
                 <button onClick={handleDelete}>Delete</button>}
-                {selected === note._id && 
+                {(selected === note._id || updating === note._id) && 
                 <button onClick={handleDeselect}>X</button>}
                 </div>
             ))}
