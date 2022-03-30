@@ -7,9 +7,15 @@ const MyNotes = () => {
         location: 'Nassau',
         description: ''
     })
+    const [upInput, setUpInput] = useState({
+        title: '',
+        location: 'L',
+        description: ''
+    })
     const [notes, setNotes] = useState([])
     const [click, setClick] = useState(0)
     const [selected, setSelected] = useState()
+    const [updating, setUpdating] = useState()
 const handleChange = (e) => {
     const {name, value} = e.target
     setInput((prevInput) => {
@@ -17,14 +23,21 @@ const handleChange = (e) => {
     })
 } 
 
-const handleAdd = (e) => {
+const handleUpChange = (e) => {
+    const {name, value} = e.target
+    setUpInput((prevInput) => {
+        return {...prevInput, [name]: value}
+    })
+    console.log(upInput)
+}
+const handleAdd = async (e) => {
     e.preventDefault()
     const noteData = {
         title: input.title,
         description: input.description,
         location: input.location
     }
-    axios.post('http://localhost:3001/api/note', noteData)
+    await axios.post('http://localhost:3001/api/note', noteData)
     setClick((prevState) => prevState + 1)
 }
 
@@ -39,6 +52,27 @@ const handleDeselect = (e) => {
     setSelected()
 }
 
+const handleUpdate = (e) => {
+    e.preventDefault()
+    setUpdating(selected)
+}
+
+const handleSave = async (e) => {
+    e.preventDefault()
+    const noteUp = {
+        title: upInput.title,
+        description: upInput.description
+    }
+    await axios.put(`http://localhost:3001/api/note/${updating}`, noteUp)
+    setSelected()
+    setUpdating()
+    setUpInput({title: "", location: "", description: ""})
+    setClick((prevState) => prevState + 1)
+}
+
+const handleDelete = (e) => {
+
+}
 
     useEffect(() => {
         const getNotes = async () => {
@@ -53,14 +87,13 @@ const handleDeselect = (e) => {
 
     return (
         <div>
-            <h1>New Note</h1>
-            {/* <p>{newNote.title} {newNote.location}</p> */}
+            <h2>New Note</h2>
             <form>
                 <div>
-                    <input onChange={handleChange} name="title" value={input.title}></input>
+                    <input onChange={handleChange} name="title"></input>
                 </div>
                 <div>
-                    <textarea onChange={handleChange} name="description" value={input.description}></textarea>
+                    <textarea onChange={handleChange} name="description"></textarea>
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
             </form>
@@ -72,9 +105,20 @@ const handleDeselect = (e) => {
                 <p>{note.description}</p>
                 <p>{note.location}</p>
                 {selected === note._id && 
-                <button>Update</button>}
+                <button onClick={handleUpdate}>Update</button>}
+                {updating === note._id && 
+                <form>
+                    <div>
+                        <input name="title" onChange={handleUpChange} value={upInput.title}></input>
+                    </div>
+                    <div>
+                        <textarea name="description" onChange={handleUpChange} defaultValue={upInput.description}></textarea>
+                    </div>
+                    <button onClick={handleSave}>Save</button>
+                </form>
+                }
                 {selected === note._id && 
-                <button>Delete</button>}
+                <button onClick={handleDelete}>Delete</button>}
                 {selected === note._id && 
                 <button onClick={handleDeselect}>X</button>}
                 </div>
