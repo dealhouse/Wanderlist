@@ -33,6 +33,17 @@ const createNote = async (req, res) => {
     }
 }
 
+const getNotes = async (req, res) => {
+    try{
+        const note = await Note.find()
+        return res.status(200).json({note})
+    }
+    catch(e) {
+        return res.status(500).send(e.message)
+    } 
+    
+}
+
 const getNoteById = async (req, res) => {
     try {
         const { id } = req.params
@@ -78,6 +89,7 @@ const deleteNote = async (req, res) => {
 module.exports = {
     getComments,
     getNewNote,
+    getNotes,
     createNote,
     getNoteById,
     updateNote,
