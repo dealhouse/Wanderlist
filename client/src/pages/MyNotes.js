@@ -39,6 +39,11 @@ const handleAdd = async (e) => {
     }
     await axios.post('http://localhost:3001/api/note', noteData)
     setClick((prevState) => prevState + 1)
+    setInput({
+        title: "",
+        description: '',
+        location: ''
+    })
 }
 
 const handleSelect = (e) => {
@@ -92,12 +97,12 @@ const handleDelete = async (e) => {
     return (
         <div>
             <h2>New Note</h2>
-            <form>
+            <form className="form1">
                 <div>
-                    <input onChange={handleChange} name="title"></input>
+                    <input onChange={handleChange} name="title" value={input.title}></input>
                 </div>
                 <div>
-                    <textarea onChange={handleChange} name="description"></textarea>
+                    <textarea onChange={handleChange} name="description" value={input.description}></textarea>
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
             </form>
