@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import React from 'react'
 import './App.css';
-import Header from './components/Header'
-import Main from './components/Main'
 import Home from './pages/Home'
 import {Routes} from 'react-router-dom'
 import {Route} from 'react-router-dom'
