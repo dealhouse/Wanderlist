@@ -1,13 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useMemo} from "react";
 import axios from "axios";
 import { Link} from 'react-router-dom'
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 
 const MyNotes = () => {
     const [input, setInput] = useState({
         title: '',
-        location: 'Nassau',
+        location: '',
         description: ''
     })
+    
     const [upInput, setUpInput] = useState({
         title: '',
         location: 'L',
@@ -17,6 +20,18 @@ const MyNotes = () => {
     const [click, setClick] = useState(0)
     const [selected, setSelected] = useState()
     const [updating, setUpdating] = useState()
+    const [value, setValue] = useState('')
+
+    const options = useMemo(() => countryList().getData(), [])
+
+const changeHandler = (e) => {
+    setValue(e)
+    // const {value} = e.target
+    setInput((prevInput) => {
+        return {...prevInput, location: e.value}
+    })
+}
+
 const handleChange = (e) => {
     const {name, value} = e.target
     setInput((prevInput) => {
@@ -105,6 +120,9 @@ const handleDelete = async (e) => {
             <form className="form1">
                 <div>
                     <input onChange={handleChange} name="title" value={input.title}></input>
+                </div>
+                <div>
+                    <Select name="location" options={options} value={value} onChange={changeHandler} />
                 </div>
                 <div>
                     <textarea onChange={handleChange} name="description" value={input.description}></textarea>
