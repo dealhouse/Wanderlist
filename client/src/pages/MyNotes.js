@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { Link} from 'react-router-dom'
 
 const MyNotes = () => {
     const [input, setInput] = useState({
@@ -96,6 +97,10 @@ const handleDelete = async (e) => {
 
     return (
         <div>
+            <div>
+            <Link to="/"><h3>Home</h3></Link>
+            <Link to="/about"><h3>About</h3></Link>
+            </div>
             <h2>New Note</h2>
             <form className="form1">
                 <div>
