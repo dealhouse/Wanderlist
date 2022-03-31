@@ -10,7 +10,7 @@ const CommentCard = (props) => {
             setImage(`https://countryflagsapi.com/png/${props.location}`)
         }
         getImage()
-    }, [])
+    }, [image])
     return (
         <div>
             <li>{props.first} {props.last} {props.location}</li>

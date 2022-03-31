@@ -10,7 +10,6 @@ const MyNotes = () => {
         location: '',
         description: ''
     })
-    
     const [upInput, setUpInput] = useState({
         title: '',
         location: 'L',
@@ -21,11 +20,13 @@ const MyNotes = () => {
     const [selected, setSelected] = useState()
     const [updating, setUpdating] = useState()
     const [value, setValue] = useState('')
+    const [image, setImage] = useState()
 
     const options = useMemo(() => countryList().getData(), [])
 
 const changeHandler = (e) => {
     setValue(e)
+    
     setInput((prevInput) => {
         return {...prevInput, location: e.value}
     })
@@ -108,7 +109,13 @@ const handleDelete = async (e) => {
         getNotes()
     }, [click])
 
-
+    useEffect(() => {
+        const getImage = async () => {
+            
+        }
+        getImage()
+    }, [image])
+    
     return (
         <div>
             <div>
@@ -135,6 +142,7 @@ const handleDelete = async (e) => {
                 <h3>{note.title}</h3>
                 <p>{note.description}</p>
                 <p>{note.location}</p>
+                <img src={`https://countryflagsapi.com/png/${note.location}`} />
                 {selected === note._id && 
                 <button onClick={handleUpdate}>Update</button>}
                 {updating === note._id && 
