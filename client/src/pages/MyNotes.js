@@ -26,7 +26,6 @@ const MyNotes = () => {
 
 const changeHandler = (e) => {
     setValue(e)
-    // const {value} = e.target
     setInput((prevInput) => {
         return {...prevInput, location: e.value}
     })
