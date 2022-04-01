@@ -2,7 +2,7 @@ const { Router } = require('express')
 const router = Router()
 const controllers = require('../controllers')
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
     res.send('this works')
 })
 router.get('/comments', controllers.getComments)
