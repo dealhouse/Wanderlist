@@ -158,7 +158,7 @@ const handleDelete = async (e) => {
                     <Select name="location" options={options} value={value} onChange={changeHandler} />
                 </div>
                 <div className="input-text">
-                    <textarea rows="4" cols="20" onChange={handleChange} name="description" value={input.description} placeholder="Type here" ></textarea>
+                    <textarea rows="3" cols="20" onChange={handleChange} name="description" value={input.description} placeholder="Type here" ></textarea>
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
             </form>
