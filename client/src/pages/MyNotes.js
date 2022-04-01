@@ -26,7 +26,6 @@ const MyNotes = () => {
 
 const changeHandler = (e) => {
     setValue(e)
-    
     setInput((prevInput) => {
         return {...prevInput, location: e.value}
     })
@@ -64,7 +63,7 @@ const handleAdd = async (e) => {
 
 const handleSelect = (e) => {
     e.preventDefault()
-    setSelected(e.target.className)
+    setSelected(e.target.id)
 
 }
 
@@ -121,16 +120,16 @@ const handleDelete = async (e) => {
             <img className="image"src={require("../assets/undraw_travel_plans_li01.png")} />
             <div className="note-list">
             {notes.map((note) => (
-                <div onClick={handleSelect} className={note._id + ' note'} key={note.createdAt}>
+                <div onClick={handleSelect} className='note' id={note._id} key={note.createdAt}>
                     <div className="note-heading">
                         <h3>{note.title}</h3>
                         <img src={`https://countryflagsapi.com/png/${note.location}`} />
                     </div>
                 <p>{note.description}</p>
                 <p>{note.location}</p>
-                {selected === (note._id + ' note')&& 
+                {selected === note._id && 
                 <button onClick={handleUpdate}>Update</button>}
-                {updating === note._id + ' note' && 
+                {updating === note._id&& 
                 <form>
                     <div className="input-title">
                         <input name="title" onChange={handleUpChange} value={upInput.title}></input>
@@ -141,9 +140,9 @@ const handleDelete = async (e) => {
                     <button onClick={handleSave}>Save</button>
                 </form>
                 }
-                {selected === note._id + ' note' && 
+                {selected === note._id && 
                 <button onClick={handleDelete}><MdDeleteForever className="delete-icon" /></button>}
-                {(selected === note._id  + ' note'|| updating === note._id + ' note') && 
+                {(selected === note._id|| updating === note._id) && 
                 <button onClick={handleDeselect}>X</button>}
                 </div>
                 
