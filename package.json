@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "client": "npm start --client",
+    "start": "concurrently\"npm run devStart\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,11 @@
   "dependencies": {
     "body-parser": "^1.19.2",
     "chance": "^1.1.8",
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "mongoose": "^6.2.8",
     "morgan": "^1.10.0"
-    
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
