@@ -21,7 +21,7 @@ const MyNotes = () => {
     const [selected, setSelected] = useState()
     const [updating, setUpdating] = useState()
     const [value, setValue] = useState('')
-
+    let selectorVal = document.getElementsByClassName('css-319lph-ValueContainer')
     const options = useMemo(() => countryList().getData(), [])
 
 const changeHandler = (e) => {
@@ -111,7 +111,7 @@ const handleDelete = async (e) => {
     
     return (
         <div className="container note-page">
-            <div className="links">
+            <div className="links note-nav">
             <Link to="/"><h3>Home</h3></Link>
             <Link to="/about"><h3>About</h3></Link>
             </div>

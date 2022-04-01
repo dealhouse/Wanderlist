@@ -22,10 +22,17 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-self: center;
   padding: 30px;
   background-color: rgb(234, 202, 230);
 }
+.note-nav{
+  margin-left: -275px;;
+  background-color: rgb(234, 202, 230);
+}
+.about-nav{
+  background-color: rgb(234, 202, 230);
+}
+
 .image{
   width: 50%;
   height: px;
@@ -80,8 +87,8 @@ textarea:focus {
 .note-list{
   display: grid;
   grid-gap: 1rem;
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  overflow-y: scroll;
 }
 
 .note{

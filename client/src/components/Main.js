@@ -16,6 +16,7 @@ const Main = () => {
     console.log(comments)
     return (
         <div className='container'>
+            <h2>Latest shared notes</h2>
             <ul className='comment-list'>
                 {comments.map((results) => (
                     <CommentCard 
