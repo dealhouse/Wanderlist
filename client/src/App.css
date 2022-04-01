@@ -45,3 +45,24 @@
   width: 50%;
   height: 500px;
 }
+
+.note{
+  background-color: #f7f4b2;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.note img{
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.note-heading{
+  display: flex;
+  justify-content: space-around;
+}

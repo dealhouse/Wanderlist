@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link} from 'react-router-dom'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import { MdDeleteForever } from 'react-icons/md'
 
 const MyNotes = () => {
     const [input, setInput] = useState({
@@ -124,13 +125,13 @@ const handleDelete = async (e) => {
             </div>
             <h2>New Note</h2>
             <form className="form1">
-                <div>
+                <div className="input-title">
                     <input onChange={handleChange} name="title" value={input.title}></input>
                 </div>
-                <div>
+                <div className="selector">
                     <Select name="location" options={options} value={value} onChange={changeHandler} />
                 </div>
-                <div>
+                <div className="input-text">
                     <textarea onChange={handleChange} name="description" value={input.description}></textarea>
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
@@ -138,27 +139,29 @@ const handleDelete = async (e) => {
             <h2>Notes</h2>
             <div className="note-list">
             {notes.map((note) => (
-                <div onClick={handleSelect} className={note._id + 'note'} key={note.createdAt}>
-                <h3>{note.title}</h3>
+                <div onClick={handleSelect} className={note._id + ' note'} key={note.createdAt}>
+                    <div className="note-heading">
+                        <h3>{note.title}</h3>
+                        <img src={`https://countryflagsapi.com/png/${note.location}`} />
+                    </div>
                 <p>{note.description}</p>
                 <p>{note.location}</p>
-                <img src={`https://countryflagsapi.com/png/${note.location}`} />
-                {selected === note._id && 
+                {selected === note._id + ' note'&& 
                 <button onClick={handleUpdate}>Update</button>}
-                {updating === note._id && 
+                {updating === note._id + ' note' && 
                 <form>
-                    <div>
+                    <div className="input-title">
                         <input name="title" onChange={handleUpChange} value={upInput.title}></input>
                     </div>
-                    <div>
+                    <div className="input-text">
                         <textarea name="description" onChange={handleUpChange} defaultValue={upInput.description}></textarea>
                     </div>
                     <button onClick={handleSave}>Save</button>
                 </form>
                 }
-                {selected === note._id && 
-                <button onClick={handleDelete}>Delete</button>}
-                {(selected === note._id || updating === note._id) && 
+                {selected === note._id + ' note' && 
+                <button onClick={handleDelete}><MdDeleteForever className="delete-icon" /></button>}
+                {(selected === note._id  + ' note'|| updating === note._id + ' note') && 
                 <button onClick={handleDeselect}>X</button>}
                 </div>
                 
