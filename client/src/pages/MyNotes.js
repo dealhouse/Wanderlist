@@ -136,9 +136,9 @@ const handleDelete = async (e) => {
                 <button onClick={handleAdd}>Add Note</button>
             </form>
             <h2>Notes</h2>
-            
+            <div className="note-list">
             {notes.map((note) => (
-                <div onClick={handleSelect} className={note._id} key={note.createdAt}>
+                <div onClick={handleSelect} className={note._id + 'note'} key={note.createdAt}>
                 <h3>{note.title}</h3>
                 <p>{note.description}</p>
                 <p>{note.location}</p>
@@ -161,8 +161,9 @@ const handleDelete = async (e) => {
                 {(selected === note._id || updating === note._id) && 
                 <button onClick={handleDeselect}>X</button>}
                 </div>
+                
             ))}
-            
+            </div>
         </div>
     )
 }
