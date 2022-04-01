@@ -4,8 +4,11 @@ import Nav from './Nav'
 const Header = () => {
     return (
         <div className='header'>
-        <Nav />
-        <img className="image" src={require('../assets/Wanderlist.png')} />
+            <div className='nav'>
+                <Nav />
+            </div>
+            <h2>Wanderlist</h2>
+            <img className="image" src={require('../assets/undraw_journey_lwlj.png')} />
         </div>
     )
 }

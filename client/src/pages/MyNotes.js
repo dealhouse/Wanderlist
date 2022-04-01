@@ -111,14 +111,14 @@ const handleDelete = async (e) => {
 
     
     return (
-        <div className="container">
-            <div>
+        <div className="container note-page">
+            <div className="links">
             <Link to="/"><h3>Home</h3></Link>
             <Link to="/about"><h3>About</h3></Link>
             </div>
-            
             <h2>Notes</h2>
-            
+            <div className="note-body">
+            <img className="image"src={require("../assets/undraw_travel_plans_li01.png")} />
             <div className="note-list">
             {notes.map((note) => (
                 <div onClick={handleSelect} className={note._id + ' note'} key={note.createdAt}>
@@ -128,7 +128,7 @@ const handleDelete = async (e) => {
                     </div>
                 <p>{note.description}</p>
                 <p>{note.location}</p>
-                {selected === note._id + ' note'&& 
+                {selected === (note._id + ' note')&& 
                 <button onClick={handleUpdate}>Update</button>}
                 {updating === note._id + ' note' && 
                 <form>
@@ -163,6 +163,7 @@ const handleDelete = async (e) => {
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
             </form>
+            </div>
             </div>
             </div>
         </div>
