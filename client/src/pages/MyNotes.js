@@ -118,25 +118,14 @@ const handleDelete = async (e) => {
     }, [image])
     
     return (
-        <div>
+        <div className="container">
             <div>
             <Link to="/"><h3>Home</h3></Link>
             <Link to="/about"><h3>About</h3></Link>
             </div>
-            <h2>New Note</h2>
-            <form className="form1">
-                <div className="input-title">
-                    <input onChange={handleChange} name="title" value={input.title}></input>
-                </div>
-                <div className="selector">
-                    <Select name="location" options={options} value={value} onChange={changeHandler} />
-                </div>
-                <div className="input-text">
-                    <textarea onChange={handleChange} name="description" value={input.description}></textarea>
-                </div>
-                <button onClick={handleAdd}>Add Note</button>
-            </form>
+            
             <h2>Notes</h2>
+            
             <div className="note-list">
             {notes.map((note) => (
                 <div onClick={handleSelect} className={note._id + ' note'} key={note.createdAt}>
@@ -165,7 +154,23 @@ const handleDelete = async (e) => {
                 <button onClick={handleDeselect}>X</button>}
                 </div>
                 
+                
             ))}
+            <div className="add note">
+            <h3>New note</h3>
+            <form className="form1">
+                <div className="input-title">
+                    <input onChange={handleChange} name="title" value={input.title} placeholder="Title"></input>
+                </div>
+                <div className="selector">
+                    <Select name="location" options={options} value={value} onChange={changeHandler} />
+                </div>
+                <div className="input-text">
+                    <textarea rows="8" cols="10" onChange={handleChange} name="description" value={input.description} placeholder="Type here" ></textarea>
+                </div>
+                <button onClick={handleAdd}>Add Note</button>
+            </form>
+            </div>
             </div>
         </div>
     )

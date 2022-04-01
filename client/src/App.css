@@ -46,14 +46,60 @@
   height: 500px;
 }
 
+.container{
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.note.add {
+  
+}
+
+.note input {
+  background-color: #f7f4b2;
+}
+
+textarea{
+  border: none;
+  resize: none;
+  background-color: #f7f4b2;
+  width: auto;
+}
+textarea:focus {
+  outline: none;
+}
+
+.selector{
+  background-color: #f7f4b2;
+  width: fit-content;
+  align-self: center;
+  margin: 0 auto;
+}
+
+
+.note-list{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
 .note{
   background-color: #f7f4b2;
   border-radius: 10px;
   padding: 1rem;
   min-height: 170px;
+  min-width: 170px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  
+}
+
+.note:hover{
+  cursor: pointer;
 }
 
 .note img{
@@ -66,3 +112,4 @@
   display: flex;
   justify-content: space-around;
 }
+
