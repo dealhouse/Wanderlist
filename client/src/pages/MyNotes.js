@@ -21,7 +21,6 @@ const MyNotes = () => {
     const [selected, setSelected] = useState()
     const [updating, setUpdating] = useState()
     const [value, setValue] = useState('')
-    const [image, setImage] = useState()
 
     const options = useMemo(() => countryList().getData(), [])
 
@@ -110,12 +109,6 @@ const handleDelete = async (e) => {
         getNotes()
     }, [click])
 
-    useEffect(() => {
-        const getImage = async () => {
-            
-        }
-        getImage()
-    }, [image])
     
     return (
         <div className="container">
@@ -166,7 +159,7 @@ const handleDelete = async (e) => {
                     <Select name="location" options={options} value={value} onChange={changeHandler} />
                 </div>
                 <div className="input-text">
-                    <textarea rows="8" cols="10" onChange={handleChange} name="description" value={input.description} placeholder="Type here" ></textarea>
+                    <textarea rows="4" cols="20" onChange={handleChange} name="description" value={input.description} placeholder="Type here" ></textarea>
                 </div>
                 <button onClick={handleAdd}>Add Note</button>
             </form>

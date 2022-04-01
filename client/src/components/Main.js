@@ -4,8 +4,8 @@ import CommentCard from './CommentCard'
 
 const Main = () => {
     const [comments, setComments] = useState([])
-
     
+
     useEffect(() => {
         const getComments = async () => {
             const comms = await axios.get('http://localhost:3001/api/comments')
@@ -15,8 +15,8 @@ const Main = () => {
     }, [])
     console.log(comments)
     return (
-        <div>
-            <ul>
+        <div className='container'>
+            <ul className='comment-list'>
                 {comments.map((results) => (
                     <CommentCard 
                     key={results._id}
@@ -24,8 +24,9 @@ const Main = () => {
                     last={results.last}
                     description={results.description}
                     date={results.date}
-                    location={results.location} 
+                    location={results.location}
                     />
+                    
                 ))}
             </ul>
         </div>

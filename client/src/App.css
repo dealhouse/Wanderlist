@@ -1,5 +1,10 @@
+body {
+  background-color: rgb(234, 202, 230);
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -43,7 +48,7 @@
 }
 .image{
   width: 50%;
-  height: 500px;
+  height: px;
 }
 
 .container{
@@ -55,7 +60,7 @@
 }
 
 .note.add {
-  
+  max-height: inherit;
 }
 
 .note input {
@@ -98,6 +103,34 @@ textarea:focus {
   
 }
 
+.comment-list{
+  overflow-y: scroll;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  height: 370px;
+}
+
+.comment{
+  background-color: #f7f4b2;
+  border-radius: 10px;
+  /* margin-top: 10px; */
+  padding: 1rem;
+  min-height: 100px;
+  min-width: 100px; 
+  max-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-y: hidden;
+}
+
+
+.comment img{
+  width: 50px;
+  height: 50px;
+  word-wrap: break-word;
+}
 .note:hover{
   cursor: pointer;
 }
@@ -106,6 +139,7 @@ textarea:focus {
   width: 50px;
   height: 50px;
   align-self: center;
+  float: left;
 }
 
 .note-heading{
@@ -113,3 +147,12 @@ textarea:focus {
   justify-content: space-around;
 }
 
+.comment-content{
+  max-height: 100px;
+  overflow-y: scroll;
+}
+li small {
+  /* display: inline; */
+  max-height: 100px;
+  overflow-y: scroll;
+}
